@@ -5,36 +5,41 @@ import { socketContext } from "../SocketContext";
 
 const Container = styled.div``;
 
-const Form = styled.form``;
+const Form = styled.div``;
 
 const Options = ({ children }) => {
-  const { me, setName, name, callaccepted, endcall, callUser, callended } =
+  const { me, setName, name, callAccepted, endCall, callUser, callEnded } =
     useContext(socketContext);
-  const [idToCall, setidToCall] = useState("");
+
+  const [idToCall, setIdToCall] = useState("");
 
   return (
-    <Container>
-      <Form className="root" noValidate autoComplete="off">
+      <Container>
+      {children}
+      <Form>
         <h2>Account Info</h2>
         <input
           label="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <CopyToClipboard text={me} className="margin">
+        {console.log(me)}
+        <CopyToClipboard text={me}>
           <button>Copy Your Id</button>
         </CopyToClipboard>
       </Form>
-      <Form className="root" noValidate autoComplete="off">
+      <Form>
         <h2>Make a Call </h2>
-        <input label="ID to call" />
-        {callaccepted && !callended ? (
-          <button onClick={endcall}>Hang Up</button>
+        <input
+          label="ID to call"
+          onChange={(e) => setIdToCall(e.target.value)}
+        />
+        {callAccepted && !callEnded ? (
+          <button onClick={endCall}>Hang Up</button>
         ) : (
           <button onClick={() => callUser(idToCall)}>Call</button>
         )}
           </Form>
-          {children}
     </Container>
   );
 };

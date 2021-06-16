@@ -12,7 +12,7 @@ const App = () => {
             </div>
             <VideoPlayer/>
             <Options>
-            <Notify/>
+                <Notify/>
             </Options>
          </>
     )
