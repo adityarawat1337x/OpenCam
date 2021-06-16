@@ -11,8 +11,10 @@ const App = () => {
                 <h1> Video Chat</h1>
             </div>
             <VideoPlayer/>
+            <Options>
             <Notify/>
-        </>
+            </Options>
+         </>
     )
 }
 
