@@ -8,12 +8,11 @@ const socket = io("http://localhost:5000");
 
 const ContextProvider = ({ children }) => {
     const [stream, setstream] = useState(null);
-    const [me, setMe] = useState(null);
+    const [me, setMe] = useState("");
     const [call, setCall] = useState({});
-    const [callaccepted, setCallAccepted] = useState(false);
-    const [callended, setCallEnded] = useState(false);
+    const [callAccepted, setCallAccepted] = useState(false);
+    const [callEnded, setCallEnded] = useState(false);
     const [name, setName] = useState("");
-
     const myVideo = useRef();
     const userVideo = useRef();
     const connectionRef = useRef();
@@ -54,9 +53,11 @@ const ContextProvider = ({ children }) => {
     };
 
     const callUser = (id) => {
+        console.log("called to",id)
         const peer = new Peer({ initiator: true, trickle: false, stream });
+        
         peer.on("signal", (data) => {
-            socket.emit("calluser", { userRoCall: id, signalData: data, from: me, name });
+            socket.emit("calluser", { userToCall: id, signalData: data, from: me, name });
         });
 
         peer.on("stream", (currentStream) => {
@@ -65,9 +66,7 @@ const ContextProvider = ({ children }) => {
       
         socket.on("callaccepted", (signal) => {
             setCallAccepted(true)
-          
             peer.signal(signal)
-
         })
       
         connectionRef.current = peer
@@ -79,7 +78,7 @@ const ContextProvider = ({ children }) => {
         window.location.reload()
     };
 
-    return <socketContext.Provider value={{call, callaccepted, myVideo, userVideo, stream, me, name, setName, callended, callUser, endCall, answerCall}}>
+    return <socketContext.Provider value={{call, callAccepted, myVideo, userVideo, stream, me, name, setName, callEnded, callUser, endCall, answerCall}}>
         {children}
     </socketContext.Provider>
 };

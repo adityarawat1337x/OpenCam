@@ -13,32 +13,35 @@ const Player = styled.div`
   align-items: center;
 `;
 
-const Video = styled.video`
+const Video = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 400px;
   height: 400px;
   border: 2px white solid;
-  fir-content:cover;
+  fir-content: cover;
   overflow: hidden;
   border-radius:50%;
 `;
 
 const VideoPlayer = () => {
-  const { call, callaccepted, myVideo, userVideo, stream, name, callended } =
+  const { call, callAccepted, myVideo, userVideo, stream, name, callEnded } =
     useContext(socketContext);
 
   return (
     <Player>
       {stream && (
-        <Video playsInline muted ref={myVideo} autoPlay>
-          {name || "Aditya"}
+        <Video>
+          <h1>{name || "Aditya"}</h1>
+          <video playsInline ref={myVideo} autoPlay />
         </Video>
       )}
-      {callaccepted && !callended && (
-        <Video playsInline ref={userVideo} autoPlay>
-          {call.name || "Anonymous"}
+      {callAccepted && !callEnded && (
+        <Video>
+          <h1>{call.name || "Anonymous"}</h1>
+          <video playsInline ref={userVideo} autoPlay />
         </Video>
       )}
     </Player>
