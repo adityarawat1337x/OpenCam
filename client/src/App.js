@@ -1,21 +1,19 @@
-import React from 'react'
-
-import VideoPlayer from "./components/VideoPlayer"
-import Options from "./components/Options"
-import Notify from "./components/Notify"
+import React from "react";
+import "./styles.css";
+import VideoPlayer from "./components/VideoPlayer";
+import Header from "./components/Header";
+import Options from "./components/Options";
+import Notify from "./components/Notify";
 
 const App = () => {
-    return (
-        <>
-            <div>
-                <h1> Video Chat</h1>
-            </div>
-            <VideoPlayer/>
-            <Options>
-                <Notify/>
-            </Options>
-         </>
-    )
-}
+	return (
+		<>
+			<Header />
+			<Notify />
+			<VideoPlayer />
+			<Options />
+		</>
+	);
+};
 
-export default App
+export default App;

@@ -1,9 +1,13 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(58, 160, 255);
+    text-align: center;
+    background-color: rgb(32, 32, 32);
 }
 
-body{
-    background:linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255))
-
+video{
+    aspect-ratio: 1/1;
+    
 }

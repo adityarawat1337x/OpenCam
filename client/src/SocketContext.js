@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 
 const socketContext = createContext();
 
-const socket = io("http://localhost:5000");
+const socket = io("https://opencamserver1337.herokuapp.com/");
 
 const ContextProvider = ({ children }) => {
     const [stream, setstream] = useState(null);
