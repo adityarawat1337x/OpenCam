@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
-
 import { socketContext } from "../SocketContext";
 
 const Frame = styled.div`
@@ -23,15 +22,16 @@ const Client = styled.div`
   max-width: 500px;
   max-height: 500px;
   @media (max-width: 768px) {
-    width: 80vw;
-    height: 80vw;
-    font-size: 12px;
+    width: 40vh;
+    height: 40vh;
+    font-size:6px;
   }
 `;
 
 const User = styled(Client)`
-  width: 80vw;
-  height: 80vw;
+  width: 40vh;
+  height: 40vh;
+  font-size:6px;
   @media (min-width: 768px) {
     position:absolute;
     top:100%;
@@ -39,9 +39,9 @@ const User = styled(Client)`
     transform:translate(0%,-140%);
     margin-right: 40px;
     width: 200px;
-  height: 200px;
-  max-width: 90%;
-  max-height: 90%;
+    height: 200px;
+    max-width: 90%;
+    max-height: 90%;
   }
 `;
 
@@ -60,6 +60,7 @@ const Video = styled.video`
 `;
 
 const VideoPlayer = () => {
+
   const { call, callAccepted, myVideo, userVideo, stream, name, callEnded } =
     useContext(socketContext);
 
@@ -68,7 +69,8 @@ const VideoPlayer = () => {
       {stream && (
         <>
           <User>
-            <Video playsInline ref={myVideo} muted autoPlay />
+            <Video playsInline ref={myVideo} muted autoPlay onClick={() => {
+            }} />
             <h1>{name || "Anonymous"}</h1>
           </User>
         </>

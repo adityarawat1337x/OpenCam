@@ -7,7 +7,10 @@ const Modal = styled.div`
   top:10%;
   left:50%;
   transform:translate(-50%,0);
-  z-index:1;
+  z-index:2;
+  background-color:rgb(34, 34, 34);
+  border-radius:20px;
+  padding:20px;
 `
 
 const Notify = () => {

@@ -5,15 +5,12 @@ import { socketContext } from "../SocketContext";
 
 const Container = styled.div`
   position:absolute;
-  top:100%;
-  transform:translate(0%,-100%);
-  width:100%;
+  bottom:0%;
+  width:100vw;
   display:flex;
   flex-direction:row;
-  padding-bottom:10px;
-    @media (max-width: 768px) {
-    position: relative;
-    margin: auto;
+  margin-bottom:10px;
+  :hover{
   }
   `;
 
@@ -30,9 +27,9 @@ const Options = () => {
   return (
     <Container>
       <Form>
-        <h2>Account Info</h2>
+        <h2>Name</h2>
         <input
-          style={{ borderTop: "none", borderRight: "none", borderLeft: "none" }}
+          style={{ border: "none", height: "30px", borderRadius: "20px", backgroundColor:"rgba(58, 160, 255,0.22)" }}
           label="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -43,7 +40,8 @@ const Options = () => {
               color: "black",
               border: "none",
               width: "100px",
-              height: "20px",
+              height: "30px",
+              borderRadius: "20px",
               backgroundColor: "rgb(58, 160, 255)",
             }}
           >
@@ -54,7 +52,7 @@ const Options = () => {
       <Form>
         <h2>Make a Call</h2>
         <input
-          style={{ borderTop: "none", borderRight: "none", borderLeft: "none" }}
+          style={{ border: "none", height: "30px", borderRadius: "20px", backgroundColor: "rgba(58, 160, 255,0.22)" }}
           label="ID to call"
           onChange={(e) => setIdToCall(e.target.value)}
         />
@@ -64,7 +62,8 @@ const Options = () => {
               color: "black",
               border: "none",
               width: "100px",
-              height: "20px",
+              height: "30px",
+              borderRadius: "20px",
               backgroundColor: "rgb(58, 160, 255)",
             }}
             onClick={endCall}
@@ -77,7 +76,8 @@ const Options = () => {
               color: "black",
               border: "none",
               width: "100px",
-              height: "20px",
+                height: "30px",
+                borderRadius: "20px",
               backgroundColor: "rgb(58, 160, 255)",
             }}
             onClick={() => callUser(idToCall)}
